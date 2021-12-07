@@ -1,4 +1,3 @@
-import java.util.*
 
 fun main() {
     val MyCommentOriginal = Comment(2, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
@@ -204,7 +203,6 @@ data class View(
 data class Donut(
     val isDonut: Boolean,
     val paidDuration: Int,
-    //val placeholder : Objects,    //к сожалению не нашёл описание данного объекта
     val canPublishFreeCopy: Boolean,
     val edit_mode: String
 )
