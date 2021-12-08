@@ -1,13 +1,13 @@
 
 fun main() {
-    val MyCommentOriginal = Comment(2, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
-    val MyCopyrightOriginal = Copyright(12, "Текстовая ссылка", "Мой копирайт", "Мой тип копирайта")
-    val MyLikesOriginal = Like(24, userLikes = true, canLike = true, canPublish = false)
-    val MyRepostsOriginal = Repost(4, user_reposted = true)
-    val MyViewsOriginal = View(122)
-    val MyDonutOriginal = Donut(false, 86400, false, "all")
+    val myCommentOriginal = Comment(2, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
+    val myCopyrightOriginal = Copyright(12, "Текстовая ссылка", "Мой копирайт", "Мой тип копирайта")
+    val myLikesOriginal = Like(24, userLikes = true, canLike = true, canPublish = false)
+    val myRepostsOriginal = Repost(4, user_reposted = true)
+    val myViewsOriginal = View(122)
+    val myDonutOriginal = Donut(false, 86400, false, "all")
 
-    val OriginalPost = Post(
+    val originalPost = Post(
         ownerId = 1,
         fromId = 1,
         createdBy = 1,
@@ -16,11 +16,11 @@ fun main() {
         replyOwnerId = 1,
         replyPostId = 1,
         friendsOnly = 1,
-        comments = MyCommentOriginal,
-        copyright = MyCopyrightOriginal,
-        likes = MyLikesOriginal,
-        reposts = MyRepostsOriginal,
-        views = MyViewsOriginal,
+        comments = myCommentOriginal,
+        copyright = myCopyrightOriginal,
+        likes = myLikesOriginal,
+        reposts = myRepostsOriginal,
+        views = myViewsOriginal,
         postType = "original",
         signerId = 1,
         canPin = true,
@@ -29,18 +29,18 @@ fun main() {
         isPinned = 1,
         markedAsAds = false,
         isFavorite = true,
-        donut = MyDonutOriginal,
+        donut = myDonutOriginal,
         postponedId = 1
     )
 
-    val MyCommentCopy = Comment(4, canPost = false, groupsCanPost = false, canClose = false, canOpen = false)
-    val MyCopyrightCopy = Copyright(24, "Текстовая ссылка копии", "Мой копирайт копии", "Мой тип копирайта копии")
-    val MyLikesCopy = Like(48, userLikes = false, canLike = false, canPublish = true)
-    val MyRepostsCopy = Repost(8, user_reposted = false)
-    val MyViewsCopy = View(244)
-    val MyDonutCopy = Donut(true, 86400 * 2, true, "duration")
+    val myCommentCopy = Comment(4, canPost = false, groupsCanPost = false, canClose = false, canOpen = false)
+    val myCopyrightCopy = Copyright(24, "Текстовая ссылка копии", "Мой копирайт копии", "Мой тип копирайта копии")
+    val myLikesCopy = Like(48, userLikes = false, canLike = false, canPublish = true)
+    val myRepostsCopy = Repost(8, user_reposted = false)
+    val myViewsCopy = View(244)
+    val myDonutCopy = Donut(true, 86400 * 2, true, "duration")
 
-    val CopyPost = Post(
+    val copyPost = Post(
         ownerId = 2,
         fromId = 2,
         createdBy = 2,
@@ -49,11 +49,11 @@ fun main() {
         replyOwnerId = 2,
         replyPostId = 2,
         friendsOnly = 2,
-        comments = MyCommentCopy,
-        copyright = MyCopyrightCopy,
-        likes = MyLikesCopy,
-        reposts = MyRepostsCopy,
-        views = MyViewsCopy,
+        comments = myCommentCopy,
+        copyright = myCopyrightCopy,
+        likes = myLikesCopy,
+        reposts = myRepostsCopy,
+        views = myViewsCopy,
         postType = "copy",
         signerId = 2,
         canPin = false,
@@ -62,18 +62,18 @@ fun main() {
         isPinned = 2,
         markedAsAds = true,
         isFavorite = false,
-        donut = MyDonutCopy,
+        donut = myDonutCopy,
         postponedId = 2
     )
 
-    val MyCommentUpdate = Comment(55, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
-    val MyCopyrightUpdate = Copyright(55, "Текстовая ссылка обновления", "Мой копирайт обновление", "Мой тип копирайта обновление")
-    val MyLikesUpdate = Like(55, userLikes = true, canLike = true, canPublish = false)
-    val MyRepostsUpdate = Repost(55, user_reposted = true)
-    val MyViewsUpdate = View(555)
-    val MyDonutUpdate = Donut(false, 555555, false, "all")
+    val myCommentUpdate = Comment(55, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
+    val myCopyrightUpdate = Copyright(55, "Текстовая ссылка обновления", "Мой копирайт обновление", "Мой тип копирайта обновление")
+    val myLikesUpdate = Like(55, userLikes = true, canLike = true, canPublish = false)
+    val myRepostsUpdate = Repost(55, user_reposted = true)
+    val myViewsUpdate = View(555)
+    val myDonutUpdate = Donut(false, 555555, false, "all")
 
-    val MyUpdatePostTrue = Post(
+    val myUpdatePostTrue = Post(
         id = 2,
         ownerId = 55,
         fromId = 55,
@@ -83,11 +83,11 @@ fun main() {
         replyOwnerId = 55,
         replyPostId = 55,
         friendsOnly = 55,
-        comments = MyCommentUpdate,
-        copyright = MyCopyrightUpdate,
-        likes = MyLikesUpdate,
-        reposts = MyRepostsUpdate,
-        views = MyViewsUpdate,
+        comments = myCommentUpdate,
+        copyright = myCopyrightUpdate,
+        likes = myLikesUpdate,
+        reposts = myRepostsUpdate,
+        views = myViewsUpdate,
         postType = "update",
         signerId = 55,
         canPin = true,
@@ -96,11 +96,11 @@ fun main() {
         isPinned = 55,
         markedAsAds = false,
         isFavorite = true,
-        donut = MyDonutUpdate,
+        donut = myDonutUpdate,
         postponedId = 55
     )
 
-    val MyUpdatePostFalse = Post(
+    val myUpdatePostFalse = Post(
         id = 30,
         ownerId = 55,
         fromId = 55,
@@ -110,11 +110,11 @@ fun main() {
         replyOwnerId = 55,
         replyPostId = 55,
         friendsOnly = 55,
-        comments = MyCommentUpdate,
-        copyright = MyCopyrightUpdate,
-        likes = MyLikesUpdate,
-        reposts = MyRepostsUpdate,
-        views = MyViewsUpdate,
+        comments = myCommentUpdate,
+        copyright = myCopyrightUpdate,
+        likes = myLikesUpdate,
+        reposts = myRepostsUpdate,
+        views = myViewsUpdate,
         postType = "update",
         signerId = 55,
         canPin = true,
@@ -123,18 +123,18 @@ fun main() {
         isPinned = 55,
         markedAsAds = false,
         isFavorite = true,
-        donut = MyDonutUpdate,
+        donut = myDonutUpdate,
         postponedId = 55
     )
 
 
-    WallService.add(OriginalPost)
-    WallService.add(CopyPost)
+    WallService.add(originalPost)
+    WallService.add(copyPost)
 
-    var result = WallService.update(MyUpdatePostTrue)
+    var result = WallService.update(myUpdatePostTrue)
     if (result) println("Пост найден, пост обновлен") else println("Пост не найден")
 
-    result = WallService.update(MyUpdatePostFalse)
+    result = WallService.update(myUpdatePostFalse)
     if (result) println("Пост найден, пост обновлен") else println("Пост не найден")
 
     val sizeWallService = WallService.posts.size
@@ -142,101 +142,9 @@ fun main() {
 
 }
 
-data class Post(
-    val id: Int = 0,
-    val ownerId: Int,
-    val fromId: Int,
-    val createdBy: Int,
-    val date: Int,
-    val text: String,
-    val replyOwnerId: Int,
-    val replyPostId: Int,
-    val friendsOnly: Int,
-    val comments: Comment,
-    val copyright: Copyright,
-    val likes: Like,
-    val reposts: Repost,
-    val views: View,
-    val postType: String,
-    val signerId: Int,
-    val canPin: Boolean,
-    val canDelete: Boolean,
-    val canEdit: Boolean,
-    val isPinned: Int,
-    val markedAsAds: Boolean,
-    val isFavorite: Boolean,
-    val donut: Donut,
-    val postponedId: Int
-)
+fun getUniqueId(posts: Array<Post>): Int {
+    if (posts.isEmpty()) return 1
 
-data class Comment(
-    val count: Int,
-    val canPost: Boolean,
-    val groupsCanPost: Boolean,
-    val canClose: Boolean,
-    val canOpen: Boolean
-)
-
-data class Copyright(
-    val id: Int,
-    val link: String,
-    val name: String,
-    val type: String
-)
-
-data class Like(
-    val count: Int,
-    val userLikes: Boolean,
-    val canLike: Boolean,
-    val canPublish: Boolean
-)
-
-data class Repost(
-    val count: Int,
-    val user_reposted: Boolean
-)
-
-data class View(
-    val count: Int
-)
-
-data class Donut(
-    val isDonut: Boolean,
-    val paidDuration: Int,
-    val canPublishFreeCopy: Boolean,
-    val edit_mode: String
-)
-
-fun getUniqueId(Posts: Array<Post>): Int {
-    var maxId = 0
-    for (Post in Posts) {
-        if (Post.id > maxId) {
-            maxId = Post.id
-        }
-    }
-    return maxId + 1
+    return posts.last().id + 1
 }
 
-object WallService {
-    var posts = emptyArray<Post>()
-
-    fun add(post: Post): Post {
-        val CopyPost = post.copy(id = getUniqueId(posts))
-        posts += CopyPost
-        return posts.last()
-    }
-
-    fun update(post: Post): Boolean {
-        for ((index, value) in posts.withIndex()) {
-            if (value.id == post.id) {
-                val UpdatePost = post.copy(
-                    ownerId = value.ownerId,
-                    date = value.date
-                )
-                posts[index] = UpdatePost
-                return true
-            }
-        }
-        return false
-    }
-}

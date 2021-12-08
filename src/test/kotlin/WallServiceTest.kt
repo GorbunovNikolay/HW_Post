@@ -10,14 +10,14 @@ class WallServiceTest {
         val service = WallService
         // заполняем несколькими постами
 
-        val MyCommentOriginal = Comment(2, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
-        val MyCopyrightOriginal = Copyright(12, "Текстовая ссылка", "Мой копирайт", "Мой тип копирайта")
-        val MyLikesOriginal = Like(24, userLikes = true, canLike = true, canPublish = false)
-        val MyRepostsOriginal = Repost(4, user_reposted = true)
-        val MyViewsOriginal = View(122)
-        val MyDonutOriginal = Donut(false, 86400, false, "all")
+        val myCommentOriginal = Comment(2, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
+        val myCopyrightOriginal = Copyright(12, "Текстовая ссылка", "Мой копирайт", "Мой тип копирайта")
+        val myLikesOriginal = Like(24, userLikes = true, canLike = true, canPublish = false)
+        val myRepostsOriginal = Repost(4, user_reposted = true)
+        val myViewsOriginal = View(122)
+        val myDonutOriginal = Donut(false, 86400, false, "all")
 
-        val OriginalPost = Post(
+        val originalPost = Post(
             ownerId = 1,
             fromId = 1,
             createdBy = 1,
@@ -26,11 +26,11 @@ class WallServiceTest {
             replyOwnerId = 1,
             replyPostId = 1,
             friendsOnly = 1,
-            comments = MyCommentOriginal,
-            copyright = MyCopyrightOriginal,
-            likes = MyLikesOriginal,
-            reposts = MyRepostsOriginal,
-            views = MyViewsOriginal,
+            comments = myCommentOriginal,
+            copyright = myCopyrightOriginal,
+            likes = myLikesOriginal,
+            reposts = myRepostsOriginal,
+            views = myViewsOriginal,
             postType = "original",
             signerId = 1,
             canPin = true,
@@ -39,18 +39,18 @@ class WallServiceTest {
             isPinned = 1,
             markedAsAds = false,
             isFavorite = true,
-            donut = MyDonutOriginal,
+            donut = myDonutOriginal,
             postponedId = 1
         )
 
-        val MyCommentCopy = Comment(4, canPost = false, groupsCanPost = false, canClose = false, canOpen = false)
-        val MyCopyrightCopy = Copyright(24, "Текстовая ссылка копии", "Мой копирайт копии", "Мой тип копирайта копии")
-        val MyLikesCopy = Like(48, userLikes = false, canLike = false, canPublish = true)
-        val MyRepostsCopy = Repost(8, user_reposted = false)
-        val MyViewsCopy = View(244)
-        val MyDonutCopy = Donut(true, 86400 * 2, true, "duration")
+        val myCommentCopy = Comment(4, canPost = false, groupsCanPost = false, canClose = false, canOpen = false)
+        val myCopyrightCopy = Copyright(24, "Текстовая ссылка копии", "Мой копирайт копии", "Мой тип копирайта копии")
+        val myLikesCopy = Like(48, userLikes = false, canLike = false, canPublish = true)
+        val myRepostsCopy = Repost(8, user_reposted = false)
+        val myViewsCopy = View(244)
+        val myDonutCopy = Donut(true, 86400 * 2, true, "duration")
 
-        val MyCopyPost = Post(
+        val myCopyPost = Post(
             ownerId = 2,
             fromId = 2,
             createdBy = 2,
@@ -59,11 +59,11 @@ class WallServiceTest {
             replyOwnerId = 2,
             replyPostId = 2,
             friendsOnly = 2,
-            comments = MyCommentCopy,
-            copyright = MyCopyrightCopy,
-            likes = MyLikesCopy,
-            reposts = MyRepostsCopy,
-            views = MyViewsCopy,
+            comments = myCommentCopy,
+            copyright = myCopyrightCopy,
+            likes = myLikesCopy,
+            reposts = myRepostsCopy,
+            views = myViewsCopy,
             postType = "copy",
             signerId = 2,
             canPin = false,
@@ -72,25 +72,27 @@ class WallServiceTest {
             isPinned = 2,
             markedAsAds = true,
             isFavorite = false,
-            donut = MyDonutCopy,
+            donut = myDonutCopy,
             postponedId = 2
         )
 
-        service.add(OriginalPost)
-        service.add(MyCopyPost)
+        service.add(originalPost)
+        assertFalse(service.posts.last().id == 0)
+        service.add(myCopyPost)
+        assertFalse(service.posts.last().id == 0)
     }
 
     @Test
-    fun updateExisting() {
+    fun updateExistingTrue() {
         val service = WallService
-        val MyCommentOriginal = Comment(2, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
-        val MyCopyrightOriginal = Copyright(12, "Текстовая ссылка", "Мой копирайт", "Мой тип копирайта")
-        val MyLikesOriginal = Like(24, userLikes = true, canLike = true, canPublish = false)
-        val MyRepostsOriginal = Repost(4, user_reposted = true)
-        val MyViewsOriginal = View(122)
-        val MyDonutOriginal = Donut(false, 86400, false, "all")
+        val myCommentOriginal = Comment(2, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
+        val myCopyrightOriginal = Copyright(12, "Текстовая ссылка", "Мой копирайт", "Мой тип копирайта")
+        val myLikesOriginal = Like(24, userLikes = true, canLike = true, canPublish = false)
+        val myRepostsOriginal = Repost(4, user_reposted = true)
+        val myViewsOriginal = View(122)
+        val myDonutOriginal = Donut(false, 86400, false, "all")
 
-        val OriginalPost = Post(
+        val originalPost = Post(
             ownerId = 1,
             fromId = 1,
             createdBy = 1,
@@ -99,11 +101,11 @@ class WallServiceTest {
             replyOwnerId = 1,
             replyPostId = 1,
             friendsOnly = 1,
-            comments = MyCommentOriginal,
-            copyright = MyCopyrightOriginal,
-            likes = MyLikesOriginal,
-            reposts = MyRepostsOriginal,
-            views = MyViewsOriginal,
+            comments = myCommentOriginal,
+            copyright = myCopyrightOriginal,
+            likes = myLikesOriginal,
+            reposts = myRepostsOriginal,
+            views = myViewsOriginal,
             postType = "original",
             signerId = 1,
             canPin = true,
@@ -112,18 +114,18 @@ class WallServiceTest {
             isPinned = 1,
             markedAsAds = false,
             isFavorite = true,
-            donut = MyDonutOriginal,
+            donut = myDonutOriginal,
             postponedId = 1
         )
 
-        val MyCommentCopy = Comment(4, canPost = false, groupsCanPost = false, canClose = false, canOpen = false)
-        val MyCopyrightCopy = Copyright(24, "Текстовая ссылка копии", "Мой копирайт копии", "Мой тип копирайта копии")
-        val MyLikesCopy = Like(48, userLikes = false, canLike = false, canPublish = true)
-        val MyRepostsCopy = Repost(8, user_reposted = false)
-        val MyViewsCopy = View(244)
-        val MyDonutCopy = Donut(true, 86400 * 2, true, "duration")
+        val myCommentCopy = Comment(4, canPost = false, groupsCanPost = false, canClose = false, canOpen = false)
+        val myCopyrightCopy = Copyright(24, "Текстовая ссылка копии", "Мой копирайт копии", "Мой тип копирайта копии")
+        val myLikesCopy = Like(48, userLikes = false, canLike = false, canPublish = true)
+        val myRepostsCopy = Repost(8, user_reposted = false)
+        val myViewsCopy = View(244)
+        val myDonutCopy = Donut(true, 86400 * 2, true, "duration")
 
-        val MyCopyPost = Post(
+        val myCopyPost = Post(
             ownerId = 2,
             fromId = 2,
             createdBy = 2,
@@ -132,11 +134,11 @@ class WallServiceTest {
             replyOwnerId = 2,
             replyPostId = 2,
             friendsOnly = 2,
-            comments = MyCommentCopy,
-            copyright = MyCopyrightCopy,
-            likes = MyLikesCopy,
-            reposts = MyRepostsCopy,
-            views = MyViewsCopy,
+            comments = myCommentCopy,
+            copyright = myCopyrightCopy,
+            likes = myLikesCopy,
+            reposts = myRepostsCopy,
+            views = myViewsCopy,
             postType = "copy",
             signerId = 2,
             canPin = false,
@@ -145,21 +147,21 @@ class WallServiceTest {
             isPinned = 2,
             markedAsAds = true,
             isFavorite = false,
-            donut = MyDonutCopy,
+            donut = myDonutCopy,
             postponedId = 2
         )
 
-        service.add(OriginalPost)
-        service.add(MyCopyPost)
+        service.add(originalPost)
+        service.add(myCopyPost)
 
-        val MyCommentUpdate = Comment(55, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
-        val MyCopyrightUpdate = Copyright(55, "Текстовая ссылка обновления", "Мой копирайт обновление", "Мой тип копирайта обновление")
-        val MyLikesUpdate = Like(55, userLikes = true, canLike = true, canPublish = false)
-        val MyRepostsUpdate = Repost(55, user_reposted = true)
-        val MyViewsUpdate = View(555)
-        val MyDonutUpdate = Donut(false, 555555, false, "all")
+        val myCommentUpdate = Comment(55, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
+        val myCopyrightUpdate = Copyright(55, "Текстовая ссылка обновления", "Мой копирайт обновление", "Мой тип копирайта обновление")
+        val myLikesUpdate = Like(55, userLikes = true, canLike = true, canPublish = false)
+        val myRepostsUpdate = Repost(55, user_reposted = true)
+        val myViewsUpdate = View(555)
+        val myDonutUpdate = Donut(false, 555555, false, "all")
 
-        val MyUpdatePostTrue = Post(
+        val myUpdatePostTrue = Post(
             id = 2,
             ownerId = 55,
             fromId = 55,
@@ -169,11 +171,11 @@ class WallServiceTest {
             replyOwnerId = 55,
             replyPostId = 55,
             friendsOnly = 55,
-            comments = MyCommentUpdate,
-            copyright = MyCopyrightUpdate,
-            likes = MyLikesUpdate,
-            reposts = MyRepostsUpdate,
-            views = MyViewsUpdate,
+            comments = myCommentUpdate,
+            copyright = myCopyrightUpdate,
+            likes = myLikesUpdate,
+            reposts = myRepostsUpdate,
+            views = myViewsUpdate,
             postType = "update",
             signerId = 55,
             canPin = true,
@@ -182,22 +184,97 @@ class WallServiceTest {
             isPinned = 55,
             markedAsAds = false,
             isFavorite = true,
-            donut = MyDonutUpdate,
+            donut = myDonutUpdate,
             postponedId = 55
         )
 
-
-
-        // создаём информацию об обновлении
-        val updateTrue = MyUpdatePostTrue
-
         // выполняем целевое действие
-        var result = service.update(updateTrue)
+        val result = service.update(myUpdatePostTrue)
 
         // проверяем результат (используйте assertTrue или assertFalse)
         assertTrue(result)
+    }
 
-        val MyUpdatePostFalse = Post(
+    @Test
+    fun updateExistingFalse() {
+        val service = WallService
+        val myCommentOriginal = Comment(2, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
+        val myCopyrightOriginal = Copyright(12, "Текстовая ссылка", "Мой копирайт", "Мой тип копирайта")
+        val myLikesOriginal = Like(24, userLikes = true, canLike = true, canPublish = false)
+        val myRepostsOriginal = Repost(4, user_reposted = true)
+        val myViewsOriginal = View(122)
+        val myDonutOriginal = Donut(false, 86400, false, "all")
+
+        val originalPost = Post(
+            ownerId = 1,
+            fromId = 1,
+            createdBy = 1,
+            date = 1,
+            text = "original",
+            replyOwnerId = 1,
+            replyPostId = 1,
+            friendsOnly = 1,
+            comments = myCommentOriginal,
+            copyright = myCopyrightOriginal,
+            likes = myLikesOriginal,
+            reposts = myRepostsOriginal,
+            views = myViewsOriginal,
+            postType = "original",
+            signerId = 1,
+            canPin = true,
+            canDelete = false,
+            canEdit = true,
+            isPinned = 1,
+            markedAsAds = false,
+            isFavorite = true,
+            donut = myDonutOriginal,
+            postponedId = 1
+        )
+
+        val myCommentCopy = Comment(4, canPost = false, groupsCanPost = false, canClose = false, canOpen = false)
+        val myCopyrightCopy = Copyright(24, "Текстовая ссылка копии", "Мой копирайт копии", "Мой тип копирайта копии")
+        val myLikesCopy = Like(48, userLikes = false, canLike = false, canPublish = true)
+        val myRepostsCopy = Repost(8, user_reposted = false)
+        val myViewsCopy = View(244)
+        val myDonutCopy = Donut(true, 86400 * 2, true, "duration")
+
+        val myCopyPost = Post(
+            ownerId = 2,
+            fromId = 2,
+            createdBy = 2,
+            date = 2,
+            text = "copy",
+            replyOwnerId = 2,
+            replyPostId = 2,
+            friendsOnly = 2,
+            comments = myCommentCopy,
+            copyright = myCopyrightCopy,
+            likes = myLikesCopy,
+            reposts = myRepostsCopy,
+            views = myViewsCopy,
+            postType = "copy",
+            signerId = 2,
+            canPin = false,
+            canDelete = true,
+            canEdit = false,
+            isPinned = 2,
+            markedAsAds = true,
+            isFavorite = false,
+            donut = myDonutCopy,
+            postponedId = 2
+        )
+
+        service.add(originalPost)
+        service.add(myCopyPost)
+
+        val myCommentUpdate = Comment(55, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
+        val myCopyrightUpdate = Copyright(55, "Текстовая ссылка обновления", "Мой копирайт обновление", "Мой тип копирайта обновление")
+        val myLikesUpdate = Like(55, userLikes = true, canLike = true, canPublish = false)
+        val myRepostsUpdate = Repost(55, user_reposted = true)
+        val myViewsUpdate = View(555)
+        val myDonutUpdate = Donut(false, 555555, false, "all")
+
+        val myUpdatePostFalse = Post(
             id = 30,
             ownerId = 55,
             fromId = 55,
@@ -207,11 +284,11 @@ class WallServiceTest {
             replyOwnerId = 55,
             replyPostId = 55,
             friendsOnly = 55,
-            comments = MyCommentUpdate,
-            copyright = MyCopyrightUpdate,
-            likes = MyLikesUpdate,
-            reposts = MyRepostsUpdate,
-            views = MyViewsUpdate,
+            comments = myCommentUpdate,
+            copyright = myCopyrightUpdate,
+            likes = myLikesUpdate,
+            reposts = myRepostsUpdate,
+            views = myViewsUpdate,
             postType = "update",
             signerId = 55,
             canPin = true,
@@ -220,15 +297,12 @@ class WallServiceTest {
             isPinned = 55,
             markedAsAds = false,
             isFavorite = true,
-            donut = MyDonutUpdate,
+            donut = myDonutUpdate,
             postponedId = 55
         )
 
-        // создаём информацию об обновлении
-        val updateFalse = MyUpdatePostFalse
-
         // выполняем целевое действие
-        result = service.update(updateFalse)
+        val result = service.update(myUpdatePostFalse)
 
         // проверяем результат (используйте assertTrue или assertFalse)
         assertFalse(result)
