@@ -16,6 +16,10 @@ class WallServiceTest {
         val myRepostsOriginal = Repost(4, user_reposted = true)
         val myViewsOriginal = View(122)
         val myDonutOriginal = Donut(false, 86400, false, "all")
+        val myPostSource = PostSource("vk", "android", "profile_activity", "https://www.vk.com")
+        val myPlace = Place("1", "Дом", 55.651940, 37.617826, 1639167144, "place.png",
+            2, 1399167144, 1, 7, 77, "Некая ул.")
+        val myGeo = Geo("Дом", "55.651940, 37.617826", myPlace)
 
         val originalPost = Post(
             ownerId = 1,
@@ -32,6 +36,9 @@ class WallServiceTest {
             reposts = myRepostsOriginal,
             views = myViewsOriginal,
             postType = "original",
+            postSource = myPostSource,
+            geo = myGeo,
+            copyHistory = emptyArray<Post>(),
             signerId = 1,
             canPin = true,
             canDelete = false,
@@ -49,8 +56,12 @@ class WallServiceTest {
         val myRepostsCopy = Repost(8, user_reposted = false)
         val myViewsCopy = View(244)
         val myDonutCopy = Donut(true, 86400 * 2, true, "duration")
+        val myPostSourceCopy = PostSource("widget", "iphone", "comments", "https://www.vk.com/copynews")
+        val myPlaceCopy = Place("2", "Работа", 55.751953, 37.717029, 1529167267, "copyPlace.png",
+            7, 1536168293, 2, 7, 77, "Спортивная ул.")
+        val myGeoCopy = Geo("Работа", "55.751953, 37.717029", myPlaceCopy)
 
-        val myCopyPost = Post(
+        val copyPost = Post(
             ownerId = 2,
             fromId = 2,
             createdBy = 2,
@@ -65,6 +76,9 @@ class WallServiceTest {
             reposts = myRepostsCopy,
             views = myViewsCopy,
             postType = "copy",
+            postSource = myPostSourceCopy,
+            geo = myGeoCopy,
+            copyHistory = emptyArray<Post>(),
             signerId = 2,
             canPin = false,
             canDelete = true,
@@ -78,7 +92,7 @@ class WallServiceTest {
 
         service.add(originalPost)
         assertFalse(service.posts.last().id == 0)
-        service.add(myCopyPost)
+        service.add(copyPost)
         assertFalse(service.posts.last().id == 0)
     }
 
@@ -91,6 +105,10 @@ class WallServiceTest {
         val myRepostsOriginal = Repost(4, user_reposted = true)
         val myViewsOriginal = View(122)
         val myDonutOriginal = Donut(false, 86400, false, "all")
+        val myPostSource = PostSource("vk", "android", "profile_activity", "https://www.vk.com")
+        val myPlace = Place("1", "Дом", 55.651940, 37.617826, 1639167144, "place.png",
+            2, 1399167144, 1, 7, 77, "Некая ул.")
+        val myGeo = Geo("Дом", "55.651940, 37.617826", myPlace)
 
         val originalPost = Post(
             ownerId = 1,
@@ -107,6 +125,9 @@ class WallServiceTest {
             reposts = myRepostsOriginal,
             views = myViewsOriginal,
             postType = "original",
+            postSource = myPostSource,
+            geo = myGeo,
+            copyHistory = emptyArray<Post>(),
             signerId = 1,
             canPin = true,
             canDelete = false,
@@ -124,8 +145,12 @@ class WallServiceTest {
         val myRepostsCopy = Repost(8, user_reposted = false)
         val myViewsCopy = View(244)
         val myDonutCopy = Donut(true, 86400 * 2, true, "duration")
+        val myPostSourceCopy = PostSource("widget", "iphone", "comments", "https://www.vk.com/copynews")
+        val myPlaceCopy = Place("2", "Работа", 55.751953, 37.717029, 1529167267, "copyPlace.png",
+            7, 1536168293, 2, 7, 77, "Спортивная ул.")
+        val myGeoCopy = Geo("Работа", "55.751953, 37.717029", myPlaceCopy)
 
-        val myCopyPost = Post(
+        val copyPost = Post(
             ownerId = 2,
             fromId = 2,
             createdBy = 2,
@@ -140,6 +165,9 @@ class WallServiceTest {
             reposts = myRepostsCopy,
             views = myViewsCopy,
             postType = "copy",
+            postSource = myPostSourceCopy,
+            geo = myGeoCopy,
+            copyHistory = emptyArray<Post>(),
             signerId = 2,
             canPin = false,
             canDelete = true,
@@ -152,7 +180,7 @@ class WallServiceTest {
         )
 
         service.add(originalPost)
-        service.add(myCopyPost)
+        service.add(copyPost)
 
         val myCommentUpdate = Comment(55, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
         val myCopyrightUpdate = Copyright(55, "Текстовая ссылка обновления", "Мой копирайт обновление", "Мой тип копирайта обновление")
@@ -160,6 +188,10 @@ class WallServiceTest {
         val myRepostsUpdate = Repost(55, user_reposted = true)
         val myViewsUpdate = View(555)
         val myDonutUpdate = Donut(false, 555555, false, "all")
+        val myPostSourceUpdate = PostSource("api", "wphone", "", "https://www.vk.com/update")
+        val myPlaceUpdate = Place("3", "Дача", 55.751541, 37.619825, 143917721, "dacha.png",
+            3, 1439167241, 3, 7, 50, "Летняя ул.")
+        val myGeoUpdate = Geo("Дача", "55.751541, 37.619825", myPlaceUpdate)
 
         val myUpdatePostTrue = Post(
             id = 2,
@@ -177,6 +209,9 @@ class WallServiceTest {
             reposts = myRepostsUpdate,
             views = myViewsUpdate,
             postType = "update",
+            postSource = myPostSourceUpdate,
+            geo = myGeoUpdate,
+            copyHistory = emptyArray<Post>(),
             signerId = 55,
             canPin = true,
             canDelete = false,
@@ -204,6 +239,10 @@ class WallServiceTest {
         val myRepostsOriginal = Repost(4, user_reposted = true)
         val myViewsOriginal = View(122)
         val myDonutOriginal = Donut(false, 86400, false, "all")
+        val myPostSource = PostSource("vk", "android", "profile_activity", "https://www.vk.com")
+        val myPlace = Place("1", "Дом", 55.651940, 37.617826, 1639167144, "place.png",
+            2, 1399167144, 1, 7, 77, "Некая ул.")
+        val myGeo = Geo("Дом", "55.651940, 37.617826", myPlace)
 
         val originalPost = Post(
             ownerId = 1,
@@ -220,6 +259,9 @@ class WallServiceTest {
             reposts = myRepostsOriginal,
             views = myViewsOriginal,
             postType = "original",
+            postSource = myPostSource,
+            geo = myGeo,
+            copyHistory = emptyArray<Post>(),
             signerId = 1,
             canPin = true,
             canDelete = false,
@@ -237,8 +279,12 @@ class WallServiceTest {
         val myRepostsCopy = Repost(8, user_reposted = false)
         val myViewsCopy = View(244)
         val myDonutCopy = Donut(true, 86400 * 2, true, "duration")
+        val myPostSourceCopy = PostSource("widget", "iphone", "comments", "https://www.vk.com/copynews")
+        val myPlaceCopy = Place("2", "Работа", 55.751953, 37.717029, 1529167267, "copyPlace.png",
+            7, 1536168293, 2, 7, 77, "Спортивная ул.")
+        val myGeoCopy = Geo("Работа", "55.751953, 37.717029", myPlaceCopy)
 
-        val myCopyPost = Post(
+        val copyPost = Post(
             ownerId = 2,
             fromId = 2,
             createdBy = 2,
@@ -253,6 +299,9 @@ class WallServiceTest {
             reposts = myRepostsCopy,
             views = myViewsCopy,
             postType = "copy",
+            postSource = myPostSourceCopy,
+            geo = myGeoCopy,
+            copyHistory = emptyArray<Post>(),
             signerId = 2,
             canPin = false,
             canDelete = true,
@@ -265,7 +314,7 @@ class WallServiceTest {
         )
 
         service.add(originalPost)
-        service.add(myCopyPost)
+        service.add(copyPost)
 
         val myCommentUpdate = Comment(55, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
         val myCopyrightUpdate = Copyright(55, "Текстовая ссылка обновления", "Мой копирайт обновление", "Мой тип копирайта обновление")
@@ -273,6 +322,10 @@ class WallServiceTest {
         val myRepostsUpdate = Repost(55, user_reposted = true)
         val myViewsUpdate = View(555)
         val myDonutUpdate = Donut(false, 555555, false, "all")
+        val myPostSourceUpdate = PostSource("api", "wphone", "", "https://www.vk.com/update")
+        val myPlaceUpdate = Place("3", "Дача", 55.751541, 37.619825, 143917721, "dacha.png",
+            3, 1439167241, 3, 7, 50, "Летняя ул.")
+        val myGeoUpdate = Geo("Дача", "55.751541, 37.619825", myPlaceUpdate)
 
         val myUpdatePostFalse = Post(
             id = 30,
@@ -290,6 +343,9 @@ class WallServiceTest {
             reposts = myRepostsUpdate,
             views = myViewsUpdate,
             postType = "update",
+            postSource = myPostSourceUpdate,
+            geo = myGeoUpdate,
+            copyHistory = emptyArray<Post>(),
             signerId = 55,
             canPin = true,
             canDelete = false,
