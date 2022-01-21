@@ -10,7 +10,7 @@ class WallServiceTest {
         val service = WallService
         // заполняем несколькими постами
 
-        val myCommentOriginal = Comment(2, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
+        val myCommentOriginal = Comment(2,2, "2", canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
         val myCopyrightOriginal = Copyright(12, "Текстовая ссылка", "Мой копирайт", "Мой тип копирайта")
         val myLikesOriginal = Like(24, userLikes = true, canLike = true, canPublish = false)
         val myRepostsOriginal = Repost(4, user_reposted = true)
@@ -51,7 +51,7 @@ class WallServiceTest {
             postponedId = 1
         )
 
-        val myCommentCopy = Comment(4, canPost = false, groupsCanPost = false, canClose = false, canOpen = false)
+        val myCommentCopy = Comment(4,4, "4", canPost = false, groupsCanPost = false, canClose = false, canOpen = false)
         val myCopyrightCopy = Copyright(24, "Текстовая ссылка копии", "Мой копирайт копии", "Мой тип копирайта копии")
         val myLikesCopy = Like(48, userLikes = false, canLike = false, canPublish = true)
         val myRepostsCopy = Repost(8, user_reposted = false)
@@ -100,7 +100,7 @@ class WallServiceTest {
     @Test
     fun updateExistingTrue() {
         val service = WallService
-        val myCommentOriginal = Comment(2, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
+        val myCommentOriginal = Comment(2,2, "2", canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
         val myCopyrightOriginal = Copyright(12, "Текстовая ссылка", "Мой копирайт", "Мой тип копирайта")
         val myLikesOriginal = Like(24, userLikes = true, canLike = true, canPublish = false)
         val myRepostsOriginal = Repost(4, user_reposted = true)
@@ -141,7 +141,7 @@ class WallServiceTest {
             postponedId = 1
         )
 
-        val myCommentCopy = Comment(4, canPost = false, groupsCanPost = false, canClose = false, canOpen = false)
+        val myCommentCopy = Comment(4,4, "4", canPost = false, groupsCanPost = false, canClose = false, canOpen = false)
         val myCopyrightCopy = Copyright(24, "Текстовая ссылка копии", "Мой копирайт копии", "Мой тип копирайта копии")
         val myLikesCopy = Like(48, userLikes = false, canLike = false, canPublish = true)
         val myRepostsCopy = Repost(8, user_reposted = false)
@@ -184,7 +184,7 @@ class WallServiceTest {
         service.add(originalPost)
         service.add(copyPost)
 
-        val myCommentUpdate = Comment(55, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
+        val myCommentUpdate = Comment(55,55, "55", canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
         val myCopyrightUpdate = Copyright(55, "Текстовая ссылка обновления", "Мой копирайт обновление", "Мой тип копирайта обновление")
         val myLikesUpdate = Like(55, userLikes = true, canLike = true, canPublish = false)
         val myRepostsUpdate = Repost(55, user_reposted = true)
@@ -235,7 +235,7 @@ class WallServiceTest {
     @Test
     fun updateExistingFalse() {
         val service = WallService
-        val myCommentOriginal = Comment(2, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
+        val myCommentOriginal = Comment(2,2, "2", canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
         val myCopyrightOriginal = Copyright(12, "Текстовая ссылка", "Мой копирайт", "Мой тип копирайта")
         val myLikesOriginal = Like(24, userLikes = true, canLike = true, canPublish = false)
         val myRepostsOriginal = Repost(4, user_reposted = true)
@@ -276,7 +276,7 @@ class WallServiceTest {
             postponedId = 1
         )
 
-        val myCommentCopy = Comment(4, canPost = false, groupsCanPost = false, canClose = false, canOpen = false)
+        val myCommentCopy = Comment(4,4, "4", canPost = false, groupsCanPost = false, canClose = false, canOpen = false)
         val myCopyrightCopy = Copyright(24, "Текстовая ссылка копии", "Мой копирайт копии", "Мой тип копирайта копии")
         val myLikesCopy = Like(48, userLikes = false, canLike = false, canPublish = true)
         val myRepostsCopy = Repost(8, user_reposted = false)
@@ -319,7 +319,7 @@ class WallServiceTest {
         service.add(originalPost)
         service.add(copyPost)
 
-        val myCommentUpdate = Comment(55, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
+        val myCommentUpdate = Comment(55,55, "55", canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
         val myCopyrightUpdate = Copyright(55, "Текстовая ссылка обновления", "Мой копирайт обновление", "Мой тип копирайта обновление")
         val myLikesUpdate = Like(55, userLikes = true, canLike = true, canPublish = false)
         val myRepostsUpdate = Repost(55, user_reposted = true)
@@ -365,6 +365,120 @@ class WallServiceTest {
 
         // проверяем результат (используйте assertTrue или assertFalse)
         assertFalse(result)
+    }
+
+    @Test
+    fun createCommentTrue() {
+        val service = WallService
+        val myCommentOriginal = Comment(2,2, "2", canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
+        val myCopyrightOriginal = Copyright(12, "Текстовая ссылка", "Мой копирайт", "Мой тип копирайта")
+        val myLikesOriginal = Like(24, userLikes = true, canLike = true, canPublish = false)
+        val myRepostsOriginal = Repost(4, user_reposted = true)
+        val myViewsOriginal = View(122)
+        val myDonutOriginal = Donut(false, 86400, false, "all")
+        val myPostSource = PostSource("vk", "android", "profile_activity", "https://www.vk.com")
+        val myPlace = Place("1", "Дом", 55.651940, 37.617826, 1639167144, "place.png",
+            2, 1399167144, 1, 7, 77, "Некая ул.")
+        val myGeo = Geo("Дом", "55.651940, 37.617826", myPlace)
+
+        val originalPost = Post(
+            ownerId = 1,
+            fromId = 1,
+            createdBy = 1,
+            date = 1,
+            text = "original",
+            replyOwnerId = 1,
+            replyPostId = 1,
+            friendsOnly = 1,
+            comments = myCommentOriginal,
+            copyright = myCopyrightOriginal,
+            likes = myLikesOriginal,
+            reposts = myRepostsOriginal,
+            views = myViewsOriginal,
+            postType = "original",
+            postSource = myPostSource,
+            attachments = emptyArray<Attachment>(),
+            geo = myGeo,
+            copyHistory = emptyArray<Post>(),
+            signerId = 1,
+            canPin = true,
+            canDelete = false,
+            canEdit = true,
+            isPinned = 1,
+            markedAsAds = false,
+            isFavorite = true,
+            donut = myDonutOriginal,
+            postponedId = 1
+        )
+
+        service.createComment(
+            Comment(
+                1,
+                21,
+                "Привет",
+                canPost = true,
+                groupsCanPost = true,
+                canClose = true,
+                canOpen = true
+            )
+        )
+    }
+
+    @Test(expected = PostNotFoundException::class)
+    fun createCommentFalse() {
+        val service = WallService
+        val myCommentOriginal = Comment(2,2, "2", canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
+        val myCopyrightOriginal = Copyright(12, "Текстовая ссылка", "Мой копирайт", "Мой тип копирайта")
+        val myLikesOriginal = Like(24, userLikes = true, canLike = true, canPublish = false)
+        val myRepostsOriginal = Repost(4, user_reposted = true)
+        val myViewsOriginal = View(122)
+        val myDonutOriginal = Donut(false, 86400, false, "all")
+        val myPostSource = PostSource("vk", "android", "profile_activity", "https://www.vk.com")
+        val myPlace = Place("1", "Дом", 55.651940, 37.617826, 1639167144, "place.png",
+            2, 1399167144, 1, 7, 77, "Некая ул.")
+        val myGeo = Geo("Дом", "55.651940, 37.617826", myPlace)
+
+        val originalPost = Post(
+            ownerId = 1,
+            fromId = 1,
+            createdBy = 1,
+            date = 1,
+            text = "original",
+            replyOwnerId = 1,
+            replyPostId = 1,
+            friendsOnly = 1,
+            comments = myCommentOriginal,
+            copyright = myCopyrightOriginal,
+            likes = myLikesOriginal,
+            reposts = myRepostsOriginal,
+            views = myViewsOriginal,
+            postType = "original",
+            postSource = myPostSource,
+            attachments = emptyArray<Attachment>(),
+            geo = myGeo,
+            copyHistory = emptyArray<Post>(),
+            signerId = 1,
+            canPin = true,
+            canDelete = false,
+            canEdit = true,
+            isPinned = 1,
+            markedAsAds = false,
+            isFavorite = true,
+            donut = myDonutOriginal,
+            postponedId = 1
+        )
+
+        service.createComment(
+            Comment(
+                2,
+                22,
+                "Привет",
+                canPost = true,
+                groupsCanPost = true,
+                canClose = true,
+                canOpen = true
+            )
+        )
     }
 }
 

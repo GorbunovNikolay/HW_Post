@@ -1,5 +1,6 @@
 object WallService {
     var posts = emptyArray<Post>()
+    private var comments = emptyArray<Comment>()
 
     fun add(post: Post): Post {
         val copyPost = post.copy(id = getUniqueId(posts))
@@ -19,5 +20,13 @@ object WallService {
             }
         }
         return false
+    }
+
+    fun createComment(comment: Comment) {
+        for (i in posts) {
+            if (i.id == comment.postId) {
+                comments += comment
+            } else throw PostNotFoundException("Идентификатор не совпадает")
+        }
     }
 }

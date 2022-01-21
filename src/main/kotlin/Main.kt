@@ -1,6 +1,9 @@
+import java.lang.RuntimeException
+
+class PostNotFoundException(message: String): RuntimeException(message)
 
 fun main() {
-    val myCommentOriginal = Comment(2, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
+    val myCommentOriginal = Comment(2,2, "2", canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
     val myCopyrightOriginal = Copyright(12, "Текстовая ссылка", "Мой копирайт", "Мой тип копирайта")
     val myLikesOriginal = Like(24, userLikes = true, canLike = true, canPublish = false)
     val myRepostsOriginal = Repost(4, user_reposted = true)
@@ -41,7 +44,7 @@ fun main() {
         postponedId = 1
     )
 
-    val myCommentCopy = Comment(4, canPost = false, groupsCanPost = false, canClose = false, canOpen = false)
+    val myCommentCopy = Comment(4,4, "2", canPost = false, groupsCanPost = false, canClose = false, canOpen = false)
     val myCopyrightCopy = Copyright(24, "Текстовая ссылка копии", "Мой копирайт копии", "Мой тип копирайта копии")
     val myLikesCopy = Like(48, userLikes = false, canLike = false, canPublish = true)
     val myRepostsCopy = Repost(8, user_reposted = false)
@@ -81,7 +84,7 @@ fun main() {
         postponedId = 2
     )
 
-    val myCommentUpdate = Comment(55, canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
+    val myCommentUpdate = Comment(55,55, "55", canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
     val myCopyrightUpdate = Copyright(55, "Текстовая ссылка обновления", "Мой копирайт обновление", "Мой тип копирайта обновление")
     val myLikesUpdate = Like(55, userLikes = true, canLike = true, canPublish = false)
     val myRepostsUpdate = Repost(55, user_reposted = true)
