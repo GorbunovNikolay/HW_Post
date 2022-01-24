@@ -23,12 +23,13 @@ object WallService {
     }
 
     fun createComment(comment: Comment) {
-        var coincidence = false
+        var foundPost = false
         for (post in posts) {
             if (post.id == comment.postId) {
                 comments += comment
-            } else coincidence = true
+                foundPost = true
+            }
         }
-        if (coincidence) throw PostNotFoundException("Идентификатор не совпадает")
+        if (!foundPost) throw PostNotFoundException("Идентификатор не совпадает")
     }
 }

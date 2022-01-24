@@ -411,6 +411,8 @@ class WallServiceTest {
             postponedId = 1
         )
 
+        service.add(originalPost)
+
         service.createComment(
             Comment(
                 1,
@@ -424,7 +426,7 @@ class WallServiceTest {
         )
     }
 
-    @Test
+    @Test(expected = PostNotFoundException::class)
     fun createCommentFalse() {
         val service = WallService
         val myCommentOriginal = Comment(2,2, "2", canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
@@ -468,9 +470,11 @@ class WallServiceTest {
             postponedId = 1
         )
 
+        service.add(originalPost)
+
         service.createComment(
             Comment(
-                2,
+                100,
                 22,
                 "Привет",
                 canPost = true,
@@ -479,6 +483,7 @@ class WallServiceTest {
                 canOpen = true
             )
         )
+
     }
 }
 
