@@ -424,7 +424,7 @@ class WallServiceTest {
         )
     }
 
-    @Test(expected = PostNotFoundException::class)
+    @Test
     fun createCommentFalse() {
         val service = WallService
         val myCommentOriginal = Comment(2,2, "2", canPost = true, groupsCanPost = true, canClose = true, canOpen = true)
